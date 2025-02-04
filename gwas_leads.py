@@ -25,6 +25,9 @@ def get_lead(args):
         for line in ss:
             ll = dict(zip(header.strip().split(), line.strip().split()))
             # filter p-value, keep SNP, remove HLA
+            if ll[args.pcol] == "NA":
+                continue
+
             if float(ll[args.pcol]) < args.gwp:   # and len(ll[args.a1])==len(ll[args.a2])==1:
                 # if ll[args.chr]=='6' and int(ll[args.pos])<34448354 and int(ll[args.
                 #     continue
