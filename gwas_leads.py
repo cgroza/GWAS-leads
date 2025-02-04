@@ -11,8 +11,8 @@ def parse_args():
     parser.add_argument('--pcol', type=str, default=None, help='p-value', required=True)
     parser.add_argument('--chr', type=str, default=None, help='CHR', required=True)
     parser.add_argument('--pos', type=str, default=None, help='POS', required=True)
-    parser.add_argument('--a1', type=str, default=None, help='A1', required=True)
-    parser.add_argument('--a2', type=str, default=None, help='A2', required=True)
+    parser.add_argument('--a1', type=str, default=None, help='A1', required=False)
+    parser.add_argument('--a2', type=str, default=None, help='A2', required=False)
     args = parser.parse_args()
     return args
 
@@ -26,7 +26,7 @@ def get_lead(args):
             ll = dict(zip(header.strip().split(), line.strip().split()))
             # filter p-value, keep SNP, remove HLA
             if float(ll[args.pcol]) < args.gwp:   # and len(ll[args.a1])==len(ll[args.a2])==1:
-                # if ll[args.chr]=='6' and int(ll[args.pos])<34448354 and int(ll[args.pos])>27477797:
+                # if ll[args.chr]=='6' and int(ll[args.pos])<34448354 and int(ll[args.
                 #     continue
                 if target is None:
                     target = ll
